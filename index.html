@@ -1,0 +1,66 @@
+<html>
+<head>
+<title> Angular Test </title>
+<link href="styles/main.css" type="text/css" rel="stylesheet">
+</head>
+
+<body ng-app="slider" ng-controller="paceController">
+  <div class="col-12" id="current">
+      <div project-slider data-item-width="160" data-total-items="projects.length">
+       <ul class="slides" ng-style="slide">
+            <li ng-repeat="project in projects" ng-dblclick="childToggleCt(project)" >
+                <project-overview  project="project">
+                </project-overview>
+                
+                <div class="slides-child" ng-show="project.childToggle" >
+                  <project-overview  ng-repeat="child in project.children"  project="child">
+                  </project-overview>
+                </div>
+            </li>
+        </ul>
+        <p>{{slide}}</p>
+        <div class="flex-direction-nav">
+            <a ng-click="slidePrev()" class="flex-prev" href="#">Prev</a>
+            <a ng-click="slideNext()" class="flex-next" href="#">Next</a>
+        </div>
+      </div>
+      <div class="misc">
+        <p>ChildToggleCtr {{childToggleCtr}}</p>
+        <p>Divs : {{totalDiv}} {{projects.length}}</p>
+      </div>
+  </div>
+    <div class="col-12" id="In Production">
+      <div project-slider data-item-width="160" data-total-items="projects.length">
+       <ul class="slides" ng-style="slide">
+            <li ng-repeat="project in production" ng-dblclick="childToggleCt(project)" >
+                <project-overview  project="project">
+                </project-overview>
+                
+                <div class="slides-child" ng-show="project.childToggle" >
+                  <project-overview  ng-repeat="child in project.children"  project="child">
+                  </project-overview>
+                </div>
+            </li>
+        </ul>
+        <p>{{slide}}</p>
+        <div class="flex-direction-nav">
+            <a ng-click="slidePrev()" class="flex-prev" href="#">Prev</a>
+            <a ng-click="slideNext()" class="flex-next" href="#">Next</a>
+        </div>
+      </div>
+      <div class="misc">
+        <p>ChildToggleCtr {{childToggleCtr}}</p>
+        <p>Divs : {{totalDiv}} {{projects.length}}</p>
+      </div>
+  </div>
+
+
+
+<!-- native _-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js"></script>
+<script src="directives/projectSlider.js"></script>
+<script src="directives/projectOverview.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
